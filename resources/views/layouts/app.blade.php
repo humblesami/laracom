@@ -6,33 +6,38 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
-	
+	@php
+		$public_folder_path = "";
+		$is_sub_str = $_SERVER['SERVER_PORT'];
+		if($is_sub_str == 80)
+			$public_folder_path = "public/";
+	@endphp
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="{{asset('front/css/animate.css')}}">
+	<link rel="stylesheet" href="{{asset($public_folder_path.'front/css/animate.css')}}">
 	<!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="{{asset('front/css/icomoon.css')}}">
-    <link rel="stylesheet" href="{{asset('front/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset($public_folder_path.'front/css/icomoon.css')}}">
+    <link rel="stylesheet" href="{{asset($public_folder_path.'front/css/bootstrap.css')}}">
 	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="{{asset('front/css/magnific-popup.css')}}">
+	<link rel="stylesheet" href="{{asset($public_folder_path.'front/css/magnific-popup.css')}}">
 
 	<!-- Flexslider  -->
-	<link rel="stylesheet" href="{{asset('front/css/flexslider.css')}}">
+	<link rel="stylesheet" href="{{asset($public_folder_path.'front/css/flexslider.css')}}">
 
 	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="{{asset('front/css/owl.carousel.min.css')}}">
-	<link rel="stylesheet" href="{{asset('front/css/owl.theme.default.min.css')}}">
+	<link rel="stylesheet" href="{{asset($public_folder_path.'front/css/owl.carousel.min.css')}}">
+	<link rel="stylesheet" href="{{asset($public_folder_path.'front/css/owl.theme.default.min.css')}}">
 	
 	<!-- Date Picker -->
-	<link rel="stylesheet" href="{{asset('front/css/bootstrap-datepicker.css')}}">
+	<link rel="stylesheet" href="{{asset($public_folder_path.'front/css/bootstrap-datepicker.css')}}">
 	<!-- Flaticons  -->
-	<link rel="stylesheet" href="{{asset('front/fonts/flaticon/font/flaticon.css')}}">
+	<link rel="stylesheet" href="{{asset($public_folder_path.'front/fonts/flaticon/font/flaticon.css')}}">
 
 	<!-- Theme style  -->
-	<link rel="stylesheet" href="{{asset('front/css/style.css')}}">
+	<link rel="stylesheet" href="{{asset($public_folder_path.'front/css/style.css')}}">
 	<!-- Select2  -->
-	<link rel="stylesheet" href="{{asset('css/select2.css')}}">
+	<link rel="stylesheet" href="{{asset($public_folder_path.'css/select2.css')}}">
 	<!-- Modernizr JS -->
-	<script src="{{asset('front/js/modernizr-2.6.2.min.js')}}"></script>
+	<script src="{{asset($public_folder_path.'front/js/modernizr-2.6.2.min.js')}}"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -121,27 +126,27 @@
 		</footer>
 
 	<!-- jQuery -->
-	<script src="{{asset('front/js/jquery.min.js')}}"></script>
+	<script src="{{asset($public_folder_path.'front/js/jquery.min.js')}}"></script>
 	<!-- jQuery Easing -->
-	<script src="{{asset('front/js/jquery.easing.1.3.js')}}"></script>
+	<script src="{{asset($public_folder_path.'front/js/jquery.easing.1.3.js')}}"></script>
 	<!-- Bootstrap -->
-	<script src="{{asset('front/js/bootstrap.min.js')}}"></script>
+	<script src="{{asset($public_folder_path.'front/js/bootstrap.min.js')}}"></script>
 	<!-- Waypoints -->
-	<script src="{{asset('front/js/jquery.waypoints.min.js')}}"></script>
+	<script src="{{asset($public_folder_path.'front/js/jquery.waypoints.min.js')}}"></script>
 	<!-- Flexslider -->
-	<script src="{{asset('front/js/jquery.flexslider-min.js')}}"></script>
+	<script src="{{asset($public_folder_path.'front/js/jquery.flexslider-min.js')}}"></script>
 	<!-- Owl carousel -->
-	<script src="{{asset('front/js/owl.carousel.min.js')}}"></script>
+	<script src="{{asset($public_folder_path.'front/js/owl.carousel.min.js')}}"></script>
 	<!-- Magnific Popup -->
-	<script src="{{asset('front/js/jquery.magnific-popup.min.js')}}"></script>
-	<script src="{{asset('front/js/magnific-popup-options.js')}}"></script>
+	<script src="{{asset($public_folder_path.'front/js/jquery.magnific-popup.min.js')}}"></script>
+	<script src="{{asset($public_folder_path.'front/js/magnific-popup-options.js')}}"></script>
 	<!-- Date Picker -->
-	<script src="{{asset('front/js/bootstrap-datepicker.js')}}"></script>
+	<script src="{{asset($public_folder_path.'front/js/bootstrap-datepicker.js')}}"></script>
 	<!-- Stellar Parallax -->
-	<script src="{{asset('front/js/jquery.stellar.min.js')}}"></script>
+	<script src="{{asset($public_folder_path.'front/js/jquery.stellar.min.js')}}"></script>
 	<!-- Main -->
-	<script src="{{asset('front/js/main.js')}}"></script>
-	<script src="{{asset('front/js/select2.js')}}"></script>
+	<script src="{{asset($public_folder_path.'front/js/main.js')}}"></script>
+	<script src="{{asset($public_folder_path.'front/js/select2.js')}}"></script>
     @yield('scripts')
 </body>
 </html>

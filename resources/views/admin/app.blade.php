@@ -4,7 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    @php
+		$public_folder_path = "";
+		$is_sub_str = $_SERVER['SERVER_PORT'];
+		if($is_sub_str == 80)
+			$public_folder_path = "public/";
+	@endphp
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -14,8 +19,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <link href="{{ asset($public_folder_path.'css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset($public_folder_path.'css/admin.css') }}" rel="stylesheet">
 </head>
 <body>
 <div class="container-fluid">
@@ -49,9 +54,9 @@
     </main>
     </div>
 </div>
-    <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset($public_folder_path.'js/app.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script> 
-    <script src="{{asset('js/admin/dashboard.js')}}"></script>
+    <script src="{{asset($public_folder_path.'js/admin/dashboard.js')}}"></script>
     @yield('scripts')
 </body>
 </html>
