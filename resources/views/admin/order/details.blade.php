@@ -40,7 +40,14 @@
                                 <td>{{$details->title}}</td>
                                 <td>{{$details->price}}</td>
                                 <td>
-                                    <img src="{{asset('public/storage/'.$details->thumbnail)}}" alt="{{$details->title}}" class="img-responsive" height="50">
+                                @php
+                                    $public_folder_path = "";
+                                    $is_sub_str = $_SERVER['SERVER_PORT'];
+                                    if($is_sub_str == 80)
+                                        $public_folder_path = "public/";
+                                @endphp
+                                <img src="{{asset($public_folder_path.'storage/'.$details->thumbnail)}}" 
+                                alt="{{asset($public_folder_path.'images/no-thumbnail.png')}}" class="img-responsive" height="50">
                                 </td>
                                 <td>{{$details->qty}}</td>
                                 <td>{{$details->status}}</td>

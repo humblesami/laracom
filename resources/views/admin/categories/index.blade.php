@@ -49,7 +49,14 @@
                                     @endif
                                 </td>
                                 <td>
-                                <img src="{{asset('public/storage/'.$category->thumbnail)}}" alt="{{$category->title}}" class="img-responsive" height="50">
+                                @php
+                        $public_folder_path = "";
+                        $is_sub_str = $_SERVER['SERVER_PORT'];
+                        if($is_sub_str == 80)
+                            $public_folder_path = "public/";
+                    @endphp
+                    <img src="{{asset($public_folder_path.'storage/'.$category->thumbnail)}}" 
+                    alt="{{asset($public_folder_path.'images/no-thumbnail.png')}}" class="img-responsive" height="50">
                             </td>
                                 <td>{{$category->created_at}}</td>
                                 <td>

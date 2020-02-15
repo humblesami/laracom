@@ -13,6 +13,6 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public function __construct()
     {
-        View::share('categories', Category::whereHas('childrens')->with('childrens')->get());
+        View::share('categories', Category::with('childrens')->get());
     }
 }

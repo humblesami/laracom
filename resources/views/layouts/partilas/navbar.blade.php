@@ -77,20 +77,18 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-				@if(@$categories)
-					@foreach($categories as $category)
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								{{ucfirst($category->title)}} <i class="fa fa-angle-down"></i>
-							</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								@foreach($category->childrens as $children)
-									<a class="dropdown-item" href="{{route('products.shop',$children->slug)}}">{{ucfirst($children->title)}}</a>
-								@endforeach 
-							</div>
-						</li>
-					@endforeach
-				@endif
+				@foreach($categories as $category)
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="{{route('products.shop',$category->slug)}}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							{{ucfirst($category->title)}} <i class="fa fa-angle-down"></i>
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							@foreach($category->childrens as $children)
+								<a class="dropdown-item" href="{{route('products.shop',$children->slug)}}">{{ucfirst($children->title)}}</a>
+							@endforeach 
+						</div>
+					</li>
+				@endforeach
 				</ul>
 			</div>
 		</nav>

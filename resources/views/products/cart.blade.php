@@ -34,8 +34,14 @@
             <div class="col-md-12">
             <div class="product-cart">
                 <div class="one-forth">
-                    <div class="product-img" style="background-image: url({{asset('public/storage/'.$product['product']->thumbnail)}});">
-                    </div>
+                @php
+                        $public_folder_path = "";
+                        $is_sub_str = $_SERVER['SERVER_PORT'];
+                        if($is_sub_str == 80)
+                            $public_folder_path = "public/";
+                    @endphp
+                    <img src="{{asset($public_folder_path.'storage/'.$product['product']->thumbnail)}});"
+                    alt="{{asset($public_folder_path.'images/no-thumbnail.png')}}" />
                     <div class="display-tc">
                         <h3>{{$product['product']->title}}</h3>
                     </div>

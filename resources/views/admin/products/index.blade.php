@@ -49,7 +49,13 @@
                             </td>
                             <td>{{$product->price}}</td>
                             <td>
-                                <img src="{{asset('public/storage/'.$product->thumbnail)}}" alt="{{$product->title}}" class="img-responsive" height="50">
+                            @php
+                                $public_folder_path = "";
+                                $is_sub_str = $_SERVER['SERVER_PORT'];
+                                if($is_sub_str == 80)
+                                    $public_folder_path = "public/";
+                            @endphp
+                                <img src="{{asset($public_folder_path.'storage/'.$product->thumbnail)}}" alt="{{$product->title}}" class="img-responsive" height="50">
                             </td>
                                 <td>{{$product->created_at}}</td>
                                 <td>

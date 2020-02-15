@@ -24,7 +24,11 @@
                       @if($product->discount > 0)
                           <p class="tag"><span class="new">{{$product->discount}} %</span></p>
                       @endif
-                      <img src="{{asset("public/storage/".$product->thumbnail)}}" alt="{{$product->title}}" style="width:100%;height:300px;object-fit:cover;overflow:hidden">
+                      $public_folder_path = "";
+                        $is_sub_str = $_SERVER['SERVER_PORT'];
+                        if($is_sub_str == 80)
+                            $public_folder_path = "public/";
+                      <img src="{{asset($public_folder_path.'storage/'.$product->thumbnail)}}" alt="{{$product->title}}" style="width:100%;height:300px;object-fit:cover;overflow:hidden">
                       <div class="cart">
                           <p>
                               <span class="addtocart"><a href="{{route('products.addToCart',$product)}}"><i class="icon-shopping-cart"></i></a></span> 

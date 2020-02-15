@@ -143,10 +143,15 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {   
+        $public_folder_path = "";
+        $is_sub_str = $_SERVER['SERVER_PORT'];
+        if($is_sub_str == 80)
+            $public_folder_path = "public/";
         try{
+
             $category->childrens()->detach();
             $category->forceDelete();
-                $file_path ='public/storage/'.$category->thumbnail;
+                $file_path = $public_folder_path.'storage/'.$category->thumbnail;
                 unlink($file_path);
                 return back()->with('message',"Category Deleted Successfully");
                 
@@ -154,7 +159,7 @@ class CategoryController extends Controller
             dd($exception->getMessage(), $exception->getLine(), $exception->getFile() );
         }
         // if($category->childrens()->detach() && $category->forceDelete()){
-        //     $file_path ='public/storage/'.$category->thumbnail;
+        //     $file_path = $public_folder_path.'/storage/'.$category->thumbnail;
         //     unlink($file_path);
         //     return back()->with('message',"Category Deleted Successfully");
         // }else{

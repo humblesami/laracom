@@ -10,7 +10,14 @@
 						<div class="col-md-5">
 							<div class="product-entry">
 								<div class="product-img" id="ex1">
-									<img src="{{asset('public/storage/'.$product->thumbnail)}}" alt="{{$product->title}}" style="width: 100%;height:400px;object-fit: cover;">
+								@php
+                        $public_folder_path = "";
+                        $is_sub_str = $_SERVER['SERVER_PORT'];
+                        if($is_sub_str == 80)
+                            $public_folder_path = "public/";
+                    @endphp
+					<img src="{{asset($public_folder_path.'storage/'.$product->thumbnail)}}" 
+					alt="{{asset($public_folder_path.'images/no-thumbnail.png')}}" style="width: 100%;height:400px;object-fit: cover;">
 									<!-- <p class="tag"><span class="sale">Sale</span></p> -->
 								</div>
 								<!-- <div class="thumb-nail">
@@ -46,7 +53,13 @@
 </div>
 @endsection
 @section('scripts')
-<script src="{{asset('public/front/js/jquery.zoom.js')}}"></script>
+@php
+	$public_folder_path = "";
+	$is_sub_str = $_SERVER['SERVER_PORT'];
+	if($is_sub_str == 80)
+		$public_folder_path = "public/";
+@endphp
+<script src="{{asset($public_folder_path.'front/js/jquery.zoom.js')}}"></script>
 <script>
 $(document).ready(function(){
 $('#ex1').css({cursor:"zoom-in"});

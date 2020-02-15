@@ -122,8 +122,14 @@
                         <div class="img-thumbnail text-center">
                             {{-- @if(isset($product)){{asset('images/'.$product->thumbnail)}} 
                             @else {{asset('images/'.no-thumbnail.png)}} @endif --}}
-                            <img src="@if(isset($product)){{asset('public/storage/'.$product->thumbnail)}} 
-                            @else {{asset('public/images/no-thumbnail.png')}} @endif" id="imgthumbnail" class="img-fluid" alt="">
+                            @php
+                                $public_folder_path = "";
+                                $is_sub_str = $_SERVER['SERVER_PORT'];
+                                if($is_sub_str == 80)
+                                    $public_folder_path = "public/";
+                            @endphp
+                            <img src="{{asset($public_folder_path.'storage/'.$product->thumbnail)}}"
+                            alt="{{asset($public_folder_path.'images/no-thumbnail.png')}}" id="imgthumbnail" class="img-fluid">
                         </div>
                     </li>
                     <li class="list-group-item">

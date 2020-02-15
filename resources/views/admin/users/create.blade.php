@@ -139,8 +139,14 @@
                         </div>
                     </div>
                     <div class="img-thumbnail text-center">
-                        <img src="@if(isset($user)){{asset('public/storage/'.$user->thumbnail)}} 
-                        @else {{asset('public/images/no-thumbnail.png')}} @endif" id="imgthumbnail" class="img-fluid" alt="">
+                    @php
+                        $public_folder_path = "";
+                        $is_sub_str = $_SERVER['SERVER_PORT'];
+                        if($is_sub_str == 80)
+                            $public_folder_path = "public/";
+                    @endphp
+                    <img src="{{asset($public_folder_path.'storage/'.$user->thumbnail)}}"
+                    alt="{{asset($public_folder_path.'images/no-thumbnail.png')}}" id="imgthumbnail" class="img-fluid">
                     </div>
                 </li>
                 <li class="list-group-item">                    

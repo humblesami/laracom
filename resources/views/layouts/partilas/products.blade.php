@@ -9,7 +9,14 @@
                 @foreach($category->childrens as $children)
                     <div class="col-sm-4 mb-2">
                         <a href="{{route('products.shop',$children->slug)}}">
-                            <img src="{{asset('public/storage/'.$children->thumbnail)}}" alt="{{asset('public/storage/'.$children->thumbnail)}}" class="category-image">
+                        @php
+                        $public_folder_path = "";
+                        $is_sub_str = $_SERVER['SERVER_PORT'];
+                        if($is_sub_str == 80)
+                            $public_folder_path = "public/";
+                    @endphp
+                    <img src="{{asset($public_folder_path.'storage/'.$children->thumbnail)}}" 
+                    alt="{{asset($public_folder_path.'storage/'.$children->thumbnail)}}" class="category-image">
                         </a>
                     </div>
                 @endforeach
@@ -76,7 +83,16 @@
                 @foreach($category->childrens as $children)
                 <div class="item">
                     <a href="{{route('products.shop',$children->slug)}}">
-                        <img src="{{asset('public/storage/'.$children->thumbnail)}}" alt="{{asset('public/storage/'.$children->thumbnail)}}" class="slide-category-image">
+                    @php
+                        $public_folder_path = "";
+                        $is_sub_str = $_SERVER['SERVER_PORT'];
+                        if($is_sub_str == 80)
+                            $public_folder_path = "public/";
+                    @endphp
+                    
+                    <img src="{{asset($public_folder_path.'storage/'.$children->thumbnail)}}" 
+                    alt="{{asset($public_folder_path.'storage/'.$children->thumbnail)}}" 
+                    class="slide-category-image">
                     </a>
                 </div>
                 @endforeach
@@ -106,7 +122,13 @@
                         @if($product->discount > 0)
                             <p class="tag"><span class="new">{{$product->discount}} %</span></p>
                         @endif
-                        <img src="{{asset("public/storage/".$product->thumbnail)}}" alt="{{$product->title}}" style="width:100%;height:300px;object-fit:cover;overflow:hidden">
+                        @php
+                        $public_folder_path = "";
+                        $is_sub_str = $_SERVER['SERVER_PORT'];
+                        if($is_sub_str == 80)
+                            $public_folder_path = "public/";
+                    @endphp
+                        <img src="{{asset($public_folder_path.'storage/'.$product->thumbnail)}}" alt="{{$product->title}}" style="width:100%;height:300px;object-fit:cover;overflow:hidden">
                         <div class="cart">
                             <p>
                                 <span class="addtocart"><a href="{{route('products.addToCart',$product)}}"><i class="icon-shopping-cart"></i></a></span> 

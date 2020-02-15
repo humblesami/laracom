@@ -43,7 +43,14 @@
                                 <td>{{@$user->role->name}},</td>
                                 <td>{{@$user->profile->address}},{{@$user->getCity()}},{{@$user->getState()}},{{@$user->getCountry()}}</td>
                                 <td>
-                                  <img src="{{asset('public/storage/'.@$user->profile->thumbnail)}}" alt="{{@$user->profile->name}}" class="img-responsive" height="50">
+                                @php
+                        $public_folder_path = "";
+                        $is_sub_str = $_SERVER['SERVER_PORT'];
+                        if($is_sub_str == 80)
+                            $public_folder_path = "public/";
+                    @endphp
+                    <img src="{{asset($public_folder_path.'storage/'.@$user->profile->thumbnail)}}" 
+                    alt="{{asset($public_folder_path.'images/no-thumbnail.png')}}" class="img-responsive" height="50">
                                 </td>
                                 <td>{{@$user->created_at}}</td>
                                 <td>

@@ -127,8 +127,12 @@ class ProfileController extends Controller
     {
         $user_id = User::where('id', $profile->id)->pluck('id');
         User::whereIn('id', $user_id)->forceDelete();
+        $public_folder_path = "";
+        $is_sub_str = $_SERVER['SERVER_PORT'];
+        if($is_sub_str == 80)
+            $public_folder_path = "public/";
         if($profile->forceDelete($profile->id)){
-            $file_path ='public/storage/'.$profile->thumbnail;
+            $file_path = $public_folder_path.'storage/'.$profile->thumbnail;
             unlink($file_path);
             return back()->with('message',"Profile Deleted Successfully");
         }else{

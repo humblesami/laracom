@@ -187,8 +187,12 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $public_folder_path = "";
+        $is_sub_str = $_SERVER['SERVER_PORT'];
+        if($is_sub_str == 80)
+            $public_folder_path = "public/";
         if($product->categories()->detach() && $product->forceDelete()){
-            $file_path ='public/storage/'.$product->thumbnail;
+            $file_path = $public_folder_path.'storage/'.$product->thumbnail;
             unlink($file_path);
             return back()->with('message',"Product Deleted Successfully");
         }else{
